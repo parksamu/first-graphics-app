@@ -4,8 +4,6 @@ var Plotlybar = require('plotly.js/lib/bar');
 Plotly.register(Plotlybar);
 
 // At the end of the _charts.js file
-console.log('Will, is that you?')
-console.log(annualTotals);
 
 
 // Initialize the arrays that will hold our lists of data
