@@ -2,16 +2,26 @@
 
 {% import "_modules/link/link.nunjucks" as link %}
 
-{% block headline %}My Son And Eggos Have Gone Missing. I Think It Has To Do With The Sketchy Government Lab{% endblock %}
+{% block headline %}LA Times Homicide Report{% endblock %}
 
-{% block byline %} By Joyce Byers {% endblock %}
+{% block byline %} By Staff {% endblock %}
 
-{% block pubdate %} <time datetime="2018-03-10" pubdate>March 10, 1983 {% endblock %}
+{% block pubdate %} <time datetime="2018-03-10" pubdate>March 10, 2018 {% endblock %}
 
 {% block content %}
-
+<section>
+<h3>Lives Lost </h3>
+<p>The {{ site.data.harvard_park_homicides|length }} homicides in Harvard Park since 2000 were primarily black and Latino males, but the list includes husbands, wives, fathers, mothers of all ages, and even some small children.</p>
+<div class="card-columns">
 {% for obj in site.data.harvard_park_homicides %}
-  {{ obj.last_name }} {{ obj. last_name }}<br>
+    <div class="card">
+    {% if obj.image %}<img class="card-img-top" src="{{ obj.image }}">{% endif %}
+      <div class="card-body">
+        <a href="http://homicide.latimes.com/post/{{ obj.slug }}" target="_blank"><strong><h5 class="card-title">{{ obj.first_name }} {{ obj.last_name }}</h5></strong></a>
+        <p class="card-text">{{ obj.last_name }}, a {{ obj.age}}-year-old {{ obj.race }} {{ obj.gender }}, died in {{ obj.death_year }}.</p>
+      </div>
+    </div>
 {% endfor %}
-
+</div>
+</section>
 {% endblock %}
